@@ -14,3 +14,9 @@ li {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.funbutton {
+  color: black;
+  background-color: lightgray;
+  margin-right: 3px;
+}
