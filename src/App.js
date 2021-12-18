@@ -25,18 +25,21 @@ export default function App() {
     ).then((response) => {
       const json = response.data;
       console.log(json);
-      setResults(json);                                         //Asetetaan tulos taulukkoon
+      setResults(json);                                       //Asetetaan tulos taulukkoon
+      setProcedureResults([]);                                       
       setViewResults([]);
     }).catch(e => console.log(e))
   }}
 
-  const radio = e => {
+  const radio = e => {                                        //Alla olevat funktiot tekevät saman, kuin yllä kuvattu
     e.preventDefault();
 
     axios.get(url + '/radio.php?search=' + radioSearch
     ).then((response) => {
       const json = response.data;
       setResults(json);
+      setProcedureResults([]);
+      setViewResults([]);
     }).catch(e => console.log(e))
   }
 
@@ -47,6 +50,7 @@ export default function App() {
     ).then((response) => {
       const json = response.data;
       setViewResults(json);
+      setProcedureResults([]);
       setResults([]);
     }).catch(e => console.log(e))
   }
@@ -58,14 +62,13 @@ export default function App() {
     ).then((response) => {
       const json = response.data;
       setViewResults(json);
+      setProcedureResults([]);
       setResults([]);
     }).catch(e => console.log(e))
   }
 
   const titlesByRating = e => {
     e.preventDefault();
-
-    console.log(rating);
 
     axios.get(url + 'rating.php?value=' + rating
     ).then((response) => {
